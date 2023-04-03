@@ -18,7 +18,7 @@ const FormTask = () => {
     }
     const handlecheckbox=(e)=>{
         console.log("completed",e.target.checked)
-        Setcompletion(e.target.checked ? "YES":"NO")
+        Setcompletion(e.target.checked ? "Completed":"InComplete")
     }
     const handlesubmit=(e)=>{
         e.preventDefault();
@@ -32,7 +32,7 @@ const FormTask = () => {
        
     }
       const pusharr=()=>{
-        setArray([...arrayvalue, {name:updateName,des:description,iscomplete:completed}]);
+        setArray([...arrayvalue, {name:updateName,des:description,taskstatus:completed}]);
         //console.log(arrayvalue)
     }
 
@@ -40,20 +40,20 @@ const FormTask = () => {
 
     <h1>Form-Task</h1>
      <form onSubmit={handlesubmit}>
-            <label >updateName:</label>
+            <label >Name:</label>
             <input type="text" placeholder="updateName"  onChange={handleUpdatedName}/><br/>
-            {updateName === "" && showerror &&<p>Task name is required</p>}
+            {updateName === "" && showerror &&<p>name required</p>}
             <label >Description:</label>
             <input type="text" placeholder="description"  onChange={handleDesvalue}/><br/>
-            {description === ""&& showerror &&<p>Description is required</p>}
-            <label >isCompleted:</label>
+            {description === ""&& showerror &&<p>Description required</p>}
+            <label >Task Status:</label>
             <input type="checkbox" onChange={handlecheckbox}/>
             <input type="submit"/>
         </form>
         <ul>Task List:
             
             {arrayvalue.map((item,index)=>(
-                <li key={index}>updateName:{item.name} <br/> Description:{item.des} <br/> isCompleted:{item.iscomplete}</li>
+                <li key={index}>Name:{item.name} <br/> Description:{item.des} <br/> Task Status:{item.taskstatus}</li>
                
                
             ))}
